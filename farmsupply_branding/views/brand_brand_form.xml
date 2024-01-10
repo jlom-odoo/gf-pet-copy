@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="brand_view_form" model="ir.ui.view">
+        <field name="name">brand.brand.form</field>
+        <field name="model">brand.brand</field>
+        <field name="arch" type="xml">
+            <form string="Create Brand">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="email" widget="email"/>
+                        <field name="image" widget="image"/>
+                        <field name="mobile" widget="phone"/>
+                        <field name="phone" widget="phone"/>
+                        <field name="website_id"/>
+                        <field name="website_name"/>
+                        <field name="document_header"/>
+                    </group>             
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="brand_view_tree" model="ir.ui.view">
+        <field name="name">brand.brand.tree</field>
+        <field name="model">brand.brand</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="mobile"/>
+                <field name="phone"/>
+                <field name="website_id"/>
+                <field name="website_name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_brand_brand" model="ir.actions.act_window">
+        <field name="name">Brands</field>
+        <field name="res_model">brand.brand</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="main_menu" name="Brands" sequence="10" web_icon="farmsupply_branding,static/description/icon.png"/>
+
+    <menuitem id="menu_brand_brand" name="Brands" parent="farmsupply_branding.main_menu" action="action_brand_brand"/>
+</odoo>
