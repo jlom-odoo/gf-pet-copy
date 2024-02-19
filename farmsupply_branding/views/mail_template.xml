@@ -6,6 +6,16 @@
             <xpath expr="//body" position="replace">
                 <body style="font-family:Verdana, Arial,sans-serif; color: #454748;">
                     <t t-set="subtype_internal" t-value="subtype and subtype.internal"/>
+                    <t t-if="'brand_id' in record">
+                        <t t-set="record_brand_id" t-value="record.brand_id"/>
+                    </t>
+                    <t t-if="'partner_id' in record and 'brand_id' in record['partner_id']">
+                        <t t-set="record_brand_id" t-value="record.partner_id.brand_id"/>
+                    </t>
+                    <t t-if="'user_partner_id' in record and 'brand_id' in record['user_partner_id']">
+                        <t t-set="record_brand_id" t-value="record.user_partner_id.brand_id"/>
+                    </t>
+                    <t t-else="" t-set="record_brand_id" t-value="None"/>
                     <!-- HEADER -->
                     <t t-call="mail.notification_preview"/>
                     <div style="max-width: 900px; width: 100%;">
@@ -22,7 +32,7 @@
                             <tbody>
                                 <tr>
                                     <td valign="center">
-                                        <img t-if="record and record.partner_id and record.partner_id.brand_id" t-att-src="'/brand_logo.png?brand=%s' % (record.partner_id.brand_id.id)" style="padding: 0px; margin: 0px; height: auto; max-width: 200px; max-height: 36px;" t-att-alt="'%s' % record.partner_id.brand_id.name"/>
+                                        <img t-if="record_brand_id" t-att-src="'/brand_logo.png?brand=%s' % (record_brand_id.id)" style="padding: 0px; margin: 0px; height: auto; max-width: 200px; max-height: 36px;" t-att-alt="'%s' % record_brand_id.name"/>
                                         <img t-else="" t-att-src="'/logo.png?company=%s' % (company.id or 0)" style="padding: 0px; margin: 0px; height: auto; max-width: 200px; max-height: 36px;" t-att-alt="'%s' % company.name"/>
                                     </td>
                                 </tr>
@@ -91,12 +101,12 @@
                     <!-- FOOTER -->
                     <div style="margin-top:32px;">
                         <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 4px 0px;"/>
-                        <t t-if="record.partner_id.brand_id">
-                            <b t-out="record.partner_id.brand_id.name" style="font-size:11px;"/><br/>
+                        <t t-if="record_brand_id">
+                            <b t-out="record_brand_id.name" style="font-size:11px;"/><br/>
                             <p style="color: #999999; margin-top:2px; font-size:11px;">
-                                <t t-out="record.partner_id.brand_id.email"/>
-                                <t t-if="record.partner_id.brand_id.email and record.partner_id.brand_id.website_name and record.partner_id.brand_id.website_id"> |</t>
-                                <a t-if="record.partner_id.brand_id.website_name and record.partner_id.brand_id.website_id" t-att-href="'%s' % record.partner_id.brand_id.website_id.domain" style="text-decoration:none; color: #999999;" t-out="record.partner_id.brand_id.website_name"/>
+                                <t t-out="record_brand_id.email"/>
+                                <t t-if="record_brand_id.email and record_brand_id.website_name and record_brand_id.website_id"> |</t>
+                                <a t-if="record_brand_id.website_name and record_brand_id.website_id" t-att-href="'%s' % record_brand_id.website_id.domain" style="text-decoration:none; color: #999999;" t-out="record_brand_id.website_name"/>
                             </p>
                         </t>
                         <t t-else="">
