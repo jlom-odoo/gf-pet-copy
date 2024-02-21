@@ -9,10 +9,11 @@
 
         Allowing documents to have different branding
     """,
-    "author": "Odoo",
+    "author": "Odoo Development Services",
+    "maintainer": "Odoo Development Services",
     "website": "https://www.odoo.com/",
     "category": "Custom Development",
-    "version": "1.0",
+    "version": "1.0.1",
     "license": "OPL-1",
     "depends": [
         "website",
