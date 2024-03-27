@@ -22,11 +22,11 @@
     ],            
     "data": [
         "security/ir.model.access.csv",
+        "views/account_move_view_form.xml"
         "views/brand_brand_form.xml",
+        "views/mail_template.xml",
         "views/res_partner_form.xml",
         "views/report_template.xml",
         "views/sale_order_form.xml",
-        "views/mail_template.xml",
-        "views/account_move_view_form.xml"
     ],
 }

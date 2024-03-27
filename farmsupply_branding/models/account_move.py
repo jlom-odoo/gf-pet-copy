@@ -17,7 +17,3 @@ class AccountMove(models.Model):
                     rec.latest_picking_id = picking_ids[0].id
                     rec.invoice_date = picking_ids[0].date_done
         return res
-            
-
-
-
