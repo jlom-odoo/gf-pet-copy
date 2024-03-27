@@ -26,6 +26,7 @@
         "views/res_partner_form.xml",
         "views/report_template.xml",
         "views/sale_order_form.xml",
-        "views/mail_template.xml"
+        "views/mail_template.xml",
+        "views/account_move_view_form.xml"
     ],
 }
