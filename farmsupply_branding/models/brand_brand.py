@@ -7,7 +7,7 @@ class BrandBrand(models.Model):
 
     name = fields.Char(string='Division Name', required=True)
     email = fields.Char(string='Division Email Address')
-    image = fields.Image(string='Division Image', attachment=False)
+    image = fields.Image(string='Division Image', stored=True, attachment=False)
     mobile = fields.Char(string='Mobile Phone Number')
     phone = fields.Char(string='Phone Number')
     website_id = fields.Many2one(string='Division Website', comodel_name='website')
